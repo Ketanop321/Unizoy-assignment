@@ -5,17 +5,26 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
+import { useAuthStore } from '@/lib/store/auth-store';
 import { cn } from '@/lib/utils';
 
-const links = [
+const baseLinks = [
   { href: '/', label: 'Home' },
   { href: '/jobs', label: 'Jobs' },
-  { href: '/admin/dashboard', label: 'Admin' },
 ];
 
 export function Navbar(): JSX.Element {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const user = useAuthStore((state) => state.user);
+  const fetchMe = useAuthStore((state) => state.fetchMe);
+  const links = [
+    ...baseLinks,
+    user?.role === 'ADMIN'
+      ? { href: '/admin/dashboard', label: 'Admin' }
+      : { href: '/admin/login', label: 'Admin Login' },
+  ];
+
   const isLinkActive = (href: string): boolean => pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
@@ -27,6 +36,10 @@ export function Navbar(): JSX.Element {
     window.addEventListener('scroll', onScroll);
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
+
+  useEffect(() => {
+    void fetchMe();
+  }, [fetchMe]);
 
   return (
     <motion.header
