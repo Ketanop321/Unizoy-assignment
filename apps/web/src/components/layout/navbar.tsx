@@ -1,6 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
@@ -38,7 +39,7 @@ export function Navbar(): JSX.Element {
     >
       <div className="mx-auto flex max-w-7xl items-center justify-between">
         <Link href="/" className="text-xl font-semibold tracking-tight">
-          <span className="gradient-text">Unizoy</span>
+          <Image src="https://www.unizoy.com/unizoy.svg" alt="Unizoy" width={120} height={32} priority />
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">
