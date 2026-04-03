@@ -16,6 +16,7 @@ const links = [
 export function Navbar(): JSX.Element {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
+  const isLinkActive = (href: string): boolean => pathname === href || pathname.startsWith(`${href}/`);
 
   useEffect(() => {
     const onScroll = (): void => {
@@ -49,7 +50,7 @@ export function Navbar(): JSX.Element {
               href={link.href}
               className={cn(
                 'text-sm text-zinc-400 transition-colors hover:text-zinc-100',
-                pathname === link.href && 'text-zinc-100',
+                isLinkActive(link.href) && 'text-zinc-100',
               )}
             >
               {link.label}
@@ -59,10 +60,27 @@ export function Navbar(): JSX.Element {
 
         <Link
           href="/jobs"
-          className="gradient-button rounded-full px-5 py-2 text-sm font-semibold text-white"
+          className="gradient-button rounded-full px-4 py-2 text-xs font-semibold text-white md:px-5 md:text-sm"
         >
           Explore Roles
         </Link>
+      </div>
+
+      <div className="mx-auto mt-3 flex max-w-7xl gap-2 overflow-x-auto pb-1 md:hidden">
+        {links.map((link) => (
+          <Link
+            key={link.href}
+            href={link.href}
+            className={cn(
+              'whitespace-nowrap rounded-full border px-3 py-1.5 text-xs font-semibold transition',
+              isLinkActive(link.href)
+                ? 'border-cyan-400/40 bg-cyan-400/15 text-cyan-200'
+                : 'border-white/10 text-zinc-300 hover:bg-white/10',
+            )}
+          >
+            {link.label}
+          </Link>
+        ))}
       </div>
     </motion.header>
   );

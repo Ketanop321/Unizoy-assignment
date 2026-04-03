@@ -89,6 +89,8 @@ npm run prisma:migrate -w apps/api -- --name init_schema
 npm run prisma:seed -w apps/api
 ```
 
+Note: seed only ensures the admin account and does not insert sample jobs or applications.
+
 ### Step 5: Start backend
 ```bash
 npm run dev -w apps/api

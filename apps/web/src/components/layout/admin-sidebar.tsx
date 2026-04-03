@@ -1,6 +1,6 @@
 'use client';
 
-import { BriefcaseBusiness, LayoutDashboard, LogOut, FileText } from 'lucide-react';
+import { BriefcaseBusiness, LayoutDashboard, LogOut, FileText, PlusCircle, House } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
 import { useAuthStore } from '@/lib/store/auth-store';
@@ -16,6 +16,7 @@ export function AdminSidebar(): JSX.Element {
   const pathname = usePathname();
   const router = useRouter();
   const logout = useAuthStore((state) => state.logout);
+  const isLinkActive = (href: string): boolean => pathname === href || pathname.startsWith(`${href}/`);
 
   return (
     <aside className="glass-card h-fit rounded-2xl p-4 md:sticky md:top-24">
@@ -27,7 +28,7 @@ export function AdminSidebar(): JSX.Element {
       <div className="space-y-2">
         {links.map((link) => {
           const Icon = link.icon;
-          const isActive = pathname === link.href;
+          const isActive = isLinkActive(link.href);
 
           return (
             <Link
@@ -45,6 +46,23 @@ export function AdminSidebar(): JSX.Element {
             </Link>
           );
         })}
+      </div>
+
+      <div className="mt-4 border-t border-white/10 pt-4">
+        <Link
+          href="/admin/jobs/new"
+          className="group flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-zinc-400 transition-all hover:bg-white/5 hover:text-zinc-100"
+        >
+          <PlusCircle size={16} className="text-zinc-500" />
+          Create Job
+        </Link>
+        <Link
+          href="/jobs"
+          className="group mt-2 flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-zinc-400 transition-all hover:bg-white/5 hover:text-zinc-100"
+        >
+          <House size={16} className="text-zinc-500" />
+          Public Jobs
+        </Link>
       </div>
 
       <button
