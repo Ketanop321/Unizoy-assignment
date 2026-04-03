@@ -77,7 +77,7 @@ unizoy-job-board/
 ### Step 2: Clone project
 ```bash
 git clone https://github.com/Ketanop321/Unizoy-assignment.git
-cd Unizoy-assignment/unizoy-job-board
+cd Unizoy-assignment
 npm install
 ```
 
