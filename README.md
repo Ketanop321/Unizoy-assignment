@@ -10,11 +10,10 @@ The app has 2 sides:
 - GitHub repository
 - Deployed frontend link
 - Deployed backend link
-- Beginner-friendly README (this file)
 
 ## Live Links
-- Frontend: https://web-ochre-seven-81.vercel.app
-- Backend API: pending deployment (deploy on Railway or Render)
+- Frontend: https://unizoy.vercel.app/
+- Backend API: https://unizoy-assignment.onrender.com
 
 ## Tech Stack (Simple View)
 - Frontend: Next.js 14, TypeScript, Tailwind CSS, Framer Motion
