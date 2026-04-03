@@ -6,7 +6,7 @@ const csrf = doubleCsrf({
   getSessionIdentifier: (req) => req.ip ?? req.headers['user-agent']?.toString() ?? 'anonymous',
   cookieName: '__Host-psifi.x-csrf-token',
   cookieOptions: {
-    sameSite: 'strict',
+    sameSite: env.NODE_ENV === 'production' ? 'none' : 'strict',
     path: '/',
     secure: env.NODE_ENV === 'production',
     httpOnly: true,

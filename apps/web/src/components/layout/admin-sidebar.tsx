@@ -18,7 +18,7 @@ export function AdminSidebar(): JSX.Element {
   const logout = useAuthStore((state) => state.logout);
 
   return (
-    <aside className="glass-card sticky top-24 h-fit rounded-2xl p-4">
+    <aside className="glass-card h-fit rounded-2xl p-4 md:sticky md:top-24">
       <div className="mb-6 px-2">
         <p className="text-xs uppercase tracking-[0.22em] text-zinc-500">Admin Panel</p>
         <h2 className="mt-2 text-lg font-semibold text-zinc-100">Unizoy Console</h2>

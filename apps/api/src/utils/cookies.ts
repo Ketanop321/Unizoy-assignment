@@ -4,11 +4,12 @@ import { env } from '../config/env.js';
 import { signAccessToken, signRefreshToken } from './jwt.js';
 
 const isProduction = env.NODE_ENV === 'production';
+const cookieSameSite = isProduction ? ('none' as const) : ('lax' as const);
 
 const baseCookieOptions = {
   httpOnly: true,
   secure: isProduction,
-  sameSite: 'lax' as const,
+  sameSite: cookieSameSite,
   path: '/',
   ...(env.COOKIE_DOMAIN ? { domain: env.COOKIE_DOMAIN } : {}),
 };
