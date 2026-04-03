@@ -51,7 +51,10 @@ export const jobController = {
   }),
 
   createJob: asyncHandler(async (req: Request, res: Response) => {
-    const createdById = req.user?.id as string;
+    const createdById = req.user?.id;
+    if (!createdById) {
+      throw new AppError(401, 'UNAUTHORIZED', 'Authentication required');
+    }
 
     const job = await jobService.createJob({
       ...req.body,

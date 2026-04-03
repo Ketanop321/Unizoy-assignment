@@ -17,7 +17,7 @@ export default function AdminJobsPage(): JSX.Element {
   const queryParams = useMemo(
     () => ({
       page: 1,
-      pageSize: 100,
+      pageSize: 50,
       search: search || undefined,
     }),
     [search],

@@ -18,7 +18,7 @@ export default function AdminApplicationsPage(): JSX.Element {
   const queryParams = useMemo(
     () => ({
       page: 1,
-      pageSize: 100,
+      pageSize: 50,
       status: status === 'ALL' ? undefined : status,
       search: search || undefined,
     }),

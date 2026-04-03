@@ -3,7 +3,7 @@ import { env } from '../config/env.js';
 
 const csrf = doubleCsrf({
   getSecret: () => env.CSRF_SECRET,
-  getSessionIdentifier: (req) => req.ip ?? req.headers['user-agent']?.toString() ?? 'anonymous',
+  getSessionIdentifier: (req) => req.headers['user-agent']?.toString() ?? 'anonymous',
   cookieName: '__Host-psifi.x-csrf-token',
   cookieOptions: {
     sameSite: env.NODE_ENV === 'production' ? 'none' : 'strict',
