@@ -9,6 +9,9 @@ const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
 export const metadata: Metadata = {
   title: 'Unizoy Job Board',
   description: 'Find your next role at Unizoy',
+  icons: {
+    icon: 'https://www.unizoy.com/meta/favicon.ico',
+  },
 };
 
 export default function RootLayout({
