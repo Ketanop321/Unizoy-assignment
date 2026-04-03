@@ -13,13 +13,8 @@ The app has 2 sides:
 - Beginner-friendly README (this file)
 
 ## Live Links
-Update these after deployment:
-- Frontend: add your Vercel URL here
-- Backend API: add your Railway or Render URL here
-
-Example:
-- Frontend: https://your-app.vercel.app
-- Backend API: https://your-api.onrender.com
+- Frontend: https://web-ochre-seven-81.vercel.app
+- Backend API: pending deployment (deploy on Railway or Render)
 
 ## Tech Stack (Simple View)
 - Frontend: Next.js 14, TypeScript, Tailwind CSS, Framer Motion
@@ -82,31 +77,11 @@ npm install
 ```
 
 ### Step 3: Configure environment files
-
-Create and update:
-- apps/api/.env
-
-Use this format:
-```env
-NODE_ENV=development
-PORT=5000
-CORS_ORIGIN=http://localhost:3000
-
-JWT_SECRET=your-very-strong-32-char-secret
-JWT_EXPIRES_IN=7d
-JWT_REFRESH_SECRET=your-very-strong-refresh-secret
-JWT_REFRESH_EXPIRES_IN=30d
-CSRF_SECRET=your-csrf-secret
-
-DATABASE_URL=your-supabase-pooled-url
-DIRECT_URL=your-supabase-direct-url
-
-SEED_ADMIN_PASSWORD=Admin@123
-```
+Create and update `apps/api/.env` by copying from `.env.example` and filling real values.
 
 Notes:
-- DATABASE_URL should use pooler (usually port 6543).
-- DIRECT_URL should use direct host (usually db.<project>.supabase.co:5432) for migrations.
+- `DATABASE_URL` should use pooled Supabase connection (usually port 6543).
+- `DIRECT_URL` should use direct database host for migrations.
 
 ### Step 4: Run migration and seed
 ```bash
@@ -187,38 +162,15 @@ npm run test -w apps/api
 npm run build
 ```
 
-## Push To GitHub (First Time)
-
-If this project is not a git repo yet, run these commands from `unizoy-job-board`:
-
-```bash
-git init
-git add .
-git commit -m "feat: complete unizoy job board assignment"
-git branch -M main
-git remote add origin https://github.com/Ketanop321/Unizoy-assignment.git
-git push -u origin main
-```
-
-If remote already exists:
-
-```bash
-git remote -v
-git push -u origin main
-```
-
-Before pushing, double-check:
-1. `apps/api/.env` is not committed.
-2. No passwords or keys are committed.
-
 ## Deployment Guide (Simple)
 
 ### 1) Database: Supabase
-- Create project
-- Copy pooled and direct Postgres URLs
-- Put them in backend env
+- Supabase is used for PostgreSQL database hosting.
+- Copy pooled and direct Postgres URLs.
+- Put them in backend env.
 
 ### 2) Backend: Railway or Render
+- Express backend is not deployed on Supabase in this setup.
 - Connect GitHub repo
 - Root directory: apps/api
 - Add env vars from apps/api/.env
@@ -231,33 +183,6 @@ Before pushing, double-check:
 - Deploy
 
 ### 4) Update Live Links section in this README
-
-## Screenshots For Submission
-
-Take screenshots after running app and add them in a folder such as `docs/screenshots/`.
-
-Recommended screenshot list:
-1. Home page
-2. Jobs list page
-3. Job detail page
-4. Apply page
-5. Admin login page
-6. Admin dashboard page
-7. Admin jobs management page
-8. Admin applications page
-
-You can add this table after uploading screenshots:
-
-| Screen | Image Path |
-|---|---|
-| Home | docs/screenshots/home.png |
-| Jobs | docs/screenshots/jobs.png |
-| Job Detail | docs/screenshots/job-detail.png |
-| Apply | docs/screenshots/apply.png |
-| Admin Login | docs/screenshots/admin-login.png |
-| Admin Dashboard | docs/screenshots/admin-dashboard.png |
-| Admin Jobs | docs/screenshots/admin-jobs.png |
-| Admin Applications | docs/screenshots/admin-applications.png |
 
 ## Troubleshooting (Beginner Friendly)
 

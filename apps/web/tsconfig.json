@@ -1,11 +1,17 @@
 {
-  "extends": "../../tsconfig.base.json",
   "compilerOptions": {
+    "target": "ES2022",
     "lib": [
       "dom",
       "dom.iterable",
       "esnext"
     ],
+    "strict": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noUncheckedIndexedAccess": true,
     "allowJs": false,
     "noEmit": true,
     "module": "esnext",
@@ -22,9 +28,6 @@
     "paths": {
       "@/*": [
         "./src/*"
-      ],
-      "@unizoy/types": [
-        "../../packages/types/src/index.ts"
       ]
     }
   },

@@ -1,4 +1,11 @@
-import type { ApplicationStatus, AuthUser, JobType } from '@unizoy/types';
+export type JobType = 'FULL_TIME' | 'PART_TIME' | 'INTERNSHIP' | 'CONTRACT';
+export type ApplicationStatus = 'PENDING' | 'REVIEWED' | 'SHORTLISTED' | 'REJECTED';
+
+export interface AuthUser {
+  id: string;
+  email: string;
+  role: 'ADMIN' | 'CANDIDATE';
+}
 
 export interface ApiResponse<T> {
   success: boolean;
