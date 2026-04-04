@@ -48,8 +48,9 @@ export default function AdminDashboardPage(): JSX.Element {
             {jobs.slice(0, 6).map((job) => (
               <div key={job.id} className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
                 <p className="font-medium text-zinc-100">{job.title}</p>
-                <p className="text-xs text-zinc-500">
-                  {job.department} - {job.type.replace('_', ' ')}
+                <p className="text-xs text-zinc-500">{job.department} - {job.type.replace('_', ' ')}</p>
+                <p className={`mt-1 text-[11px] font-semibold ${job.isActive ? 'text-emerald-300' : 'text-amber-300'}`}>
+                  {job.isActive ? 'PUBLICLY VISIBLE' : 'ADMIN ONLY (INACTIVE)'}
                 </p>
               </div>
             ))}

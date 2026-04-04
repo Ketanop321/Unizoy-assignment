@@ -98,9 +98,12 @@ export function JobForm({ defaultValues, submitLabel, onSubmit }: JobFormProps):
         />
       </div>
 
-      <label className="mt-4 inline-flex items-center gap-2 text-sm text-zinc-300">
-        <input type="checkbox" {...register('isActive')} /> Active
-      </label>
+      <div className="mt-4">
+        <label className="inline-flex items-center gap-2 text-sm text-zinc-300">
+          <input type="checkbox" {...register('isActive')} /> Active (visible on public jobs page)
+        </label>
+        <p className="mt-1 text-xs text-zinc-500">Inactive jobs are visible in admin only.</p>
+      </div>
 
       <button
         type="submit"
